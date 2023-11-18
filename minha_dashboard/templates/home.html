@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'titulo' %}Dashboard{% endblock %}
+
+{% block 'head' %}
+
+<link rel="stylesheet" href="{% static 'css/css.css' %}">
+
+{% endblock %}
+
+{% block 'body' %}
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-md ">
+            <br>
+            <h2>Temperatura:</h2>
+            <canvas id="tmp" width="250" height="200"></canvas>
+        </div>
+        <div class="col-md ">
+            <br>
+            <h2>Humidade:</h2>
+            <canvas id="hum" width="250" height="200"></canvas>
+        </div>
+        <div class="col-md ">
+            <br>
+            <h2>Luminosidade:</h2>
+            <canvas id="lux" width="250" height="200"></canvas>
+        </div>
+        <div class="col-md ">
+            <br>
+            <h2>Combo:</h2>
+            <canvas id="combo" width="250" height="200"></canvas>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/js.js' %}"></script>
+
+
+<script>
+    window.onload = function(e){
+    gera_cor(qtd=12)
+    renderiza_tmp('{% url "medias" %}')
+    renderiza_hum('{% url "medias" %}')
+    renderiza_lux('{% url "medias" %}')
+    renderiza_combo('{% url "medias" %}')
+}
+</script>
+{% endblock %}
