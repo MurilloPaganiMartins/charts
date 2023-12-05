@@ -6,12 +6,29 @@
 {% block 'head' %}
 
 <link rel="stylesheet" href="{% static 'css/css.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/dist/css/bootstrap-icons.min.css" integrity="sha384-xe0YxFG8kIvJ/tVM2P0tZ013wGCU0cn/1ijdfo0dgt6z/m0Y5+52ia+Afq/K1z7" crossorigin="anonymous">
 
 {% endblock %}
 
 {% block 'body' %}
 
 <div class="container">
+    <div>
+
+        <label for="startdate">Data Inicial:</label>
+        <input type="date" id="startdate" name="startdate">
+
+        <label for="enddate">Data Final:</label>
+        <input type="date" id="enddate" name="enddate">
+
+        <button type="button" class="btn btn-primary" id="render-temp-btn">
+            <i class="bi bi-search"></i> Procurar
+        </button>
+        <button type="button" class="btn btn-secondary" id="reset-temp-btn">
+            <i class="bi bi-arrow-counterclockwise"></i> Padrão
+        </button>
+
+    </div>
 
 
     <div class="row">
@@ -45,12 +62,38 @@
 
 
 <script>
-    window.onload = function(e){
-    gera_cor(qtd=12)
+  window.onload = function(e) {
+    gera_cor(qtd = 12)
     renderiza_tmp('{% url "medias" %}')
     renderiza_hum('{% url "medias" %}')
     renderiza_lux('{% url "medias" %}')
     renderiza_combo('{% url "medias" %}')
-}
+  }
+  const BASE_URL = 'http://127.0.0.1:8000';
+  const startDateInput = document.getElementById('startdate');
+  const endDateInput = document.getElementById('enddate');
+  const renderButton = document.getElementById('render-temp-btn');
+  const resetButton = document.getElementById('reset-temp-btn');
+  renderButton.addEventListener('click', (event) => {
+    const startDate = startDateInput.value;
+    const endDate = endDateInput.value;
+    //console.log(startDate)
+    //console.log(endDate)
+    const url = `${BASE_URL}/medias/${startDate}/${endDate}`;
+    console.log(url);
+    renderiza_tmp(url);
+    renderiza_hum(url);
+    renderiza_lux(url);
+    renderiza_combo(url);
+  });
+  resetButton.addEventListener('click', (event) => {
+
+    const url = `${BASE_URL}/medias`;
+    console.log(url);
+    renderiza_tmp(url);
+    renderiza_hum(url);
+    renderiza_lux(url);
+    renderiza_combo(url);
+  });
 </script>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse, JsonResponse
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.db.models import Sum
 from statistics import mean
 from .models import Aluno, Entradas
@@ -12,8 +12,12 @@ def home(request):
     return render(request, 'home.html')
 
 
-def medias(request):
-    x = Entradas.objects.all()
+def medias(request, start_date=None, end_date=None):
+    start_date = datetime.strptime(start_date, '%Y-%m-%d') if start_date else datetime.now() - timedelta(days=365)
+    end_date = datetime.strptime(end_date, '%Y-%m-%d') if end_date else datetime.now()
+
+    x = Entradas.objects.filter(data__range=[start_date, end_date])
+    months_difference = (end_date.year - start_date.year) * 12 + end_date.month - start_date.month
 
     meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
     data_temperatura = []
@@ -21,9 +25,9 @@ def medias(request):
     data_lux = []
     labels = []
     cont = 0
-    mes = datetime.now().month + 1
-    ano = datetime.now().year
-    for i in range(12):
+    mes = end_date.month + 1
+    ano = end_date.year
+    for i in range(months_difference + 1):
         mes -= 1
         if mes == 0:
             mes = 12

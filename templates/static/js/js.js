@@ -25,6 +25,9 @@ function renderiza_tmp(url){
 
         const ctx = document.getElementById('tmp').getContext('2d');
         //var cores_tmp = gera_cor(qtd=12)
+        if (Chart.getChart(ctx)) {
+            Chart.getChart(ctx).destroy();
+         }
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -52,6 +55,10 @@ function renderiza_hum(url){
 
         const ctx = document.getElementById('hum').getContext('2d');
         //var cores_hum = gera_cor(qtd=12)
+
+        if (Chart.getChart(ctx)) {
+            Chart.getChart(ctx).destroy();
+         }
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -79,6 +86,9 @@ function renderiza_lux(url){
 
         const ctx = document.getElementById('lux').getContext('2d');
         //var cores_lux = gera_cor(qtd=12)
+        if (Chart.getChart(ctx)) {
+            Chart.getChart(ctx).destroy();
+         }
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -106,6 +116,9 @@ function renderiza_combo(url){
 
         const ctx = document.getElementById('combo').getContext('2d');
         //var cores_lux = gera_cor(qtd=12)
+        if (Chart.getChart(ctx)) {
+            Chart.getChart(ctx).destroy();
+         }
         const myChart = new Chart(ctx, {
 
             data: {
