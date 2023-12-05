@@ -18,7 +18,7 @@ def medias(request, start_date=None, end_date=None):
 
     x = Entradas.objects.filter(data__range=[start_date, end_date])
     months_difference = (end_date.year - start_date.year) * 12 + end_date.month - start_date.month
-
+    variavel = 42
     meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
     data_temperatura = []
     data_humidade = []
