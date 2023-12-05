@@ -6,7 +6,7 @@ from statistics import mean
 from .models import Aluno, Entradas
 
 # Create your views here.
-
+#commit
 
 def home(request):
     return render(request, 'home.html')
