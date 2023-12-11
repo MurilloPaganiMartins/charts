@@ -2,6 +2,7 @@ body{
     background-color: #0D0E11;
     color: white;
 
+
 }
 
 .informacoes_basicas{
@@ -28,3 +29,19 @@ body{
 
 
 }
+
+.col-md {
+    max-height: 85vh; /* Set the maximum height to 60% of the viewport height */
+
+    /* Add any additional styling as needed */
+    margin-top: 25px;
+    align-self: center;
+ }
+
+
+.inputs{
+    border-radius: 0.25rem;
+    margin: 20px 10px 10px 1px;
+    color: red;
+}
+
