@@ -41,26 +41,33 @@
 
     <div class="row">
 
-        <div class="col-md ">
-            <br>
+        <div class="row">
+            <div class="col-md ">
+                <br>
+                <canvas id="tmp" width="80" height="30"></canvas>
+                </div>
+            <div class="col-md ">
+                <br>
 
-            <canvas id="tmp" width="250" height="200"></canvas>
+                <canvas id="hum" width="80" height="30"></canvas>
+            </div>
         </div>
-        <div class="col-md ">
-            <br>
 
-            <canvas id="hum" width="250" height="200"></canvas>
-        </div>
-        <div class="col-md ">
-            <br>
+        <div class="row">
+            <div class="col-md ">
+                <br>
 
-            <canvas id="lux" width="250" height="200"></canvas>
-        </div>
-        <div class="col-md ">
-            <br>
+                <canvas id="lux" width="80" height="30"></canvas>
+            </div>
+                <div class="col-md ">
+                <br>
 
-            <canvas id="volts" width="250" height="200"></canvas>
+                <canvas id="volts" width="80" height="30"></canvas>
+             </div>
         </div>
+
+
+
 
     </div>
 
@@ -78,10 +85,13 @@
     renderiza_hum('{% url "medias" %}')
     renderiza_lux('{% url "medias" %}')
     renderiza_volts('{% url "medias" %}')
-
-
-
   }
+
+  window.onresize = function(e) {
+    location.reload();
+  }
+
+
   const BASE_URL = 'http://127.0.0.1:8000';
   const startDateInput = document.getElementById('startdate');
   const endDateInput = document.getElementById('enddate');

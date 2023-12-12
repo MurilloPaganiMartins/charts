@@ -65,17 +65,18 @@ def medias(request, date_mode=2, start_date=None, end_date=None):
 
         num_entries = len(temperatures)
 
-        average_temperature = total_temperature / num_entries if num_entries > 0 else 0
-        average_humidade = total_humidade / num_entries if num_entries > 0 else 0
-        average_lux = total_lux / num_entries if num_entries > 0 else 0
-        average_volts = total_volts / num_entries if num_entries > 0 else 0
+        average_temperature = round(total_temperature / num_entries, 2) if num_entries > 0 else 0
+        average_humidade = round(total_humidade / num_entries, 2) if num_entries > 0 else 0
+        average_lux = round(total_lux / num_entries, 2) if num_entries > 0 else 0
+        average_volts = round(total_volts / num_entries, 2) if num_entries > 0 else 0
+        average_students = round(total_students / num_entries, 2) if num_entries > 0 else 0
 
         labels.append(current_date.strftime('%Y-%m-%d'))
         data_temperatura.append(average_temperature)
         data_humidade.append(average_humidade)
         data_lux.append(average_lux)
         data_volts.append(average_volts)
-        data_alunos.append(total_students)
+        data_alunos.append(average_students)
 
     data_json = {
         'data_alunos': data_alunos,

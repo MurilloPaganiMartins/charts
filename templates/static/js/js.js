@@ -49,13 +49,18 @@ function renderiza_tmp(url){
                                 return label;
                             }
                         }
+                    },
+                    legend:{
+                        labels:{
+                          boxWidth: 0.
+                        }
                     }
                 }
             },
             data: {
                 labels: data.labels,
                 datasets: [{
-                    label: 'Média em Celsius',
+                    label: 'Média de Celsius',
                     data: data.data_temperatura, // Assuming data_lux is available in your data
                     data_alunos: data.data_alunos, // Assuming data_alunos is available in your data
                     backgroundColor: bg_color,
@@ -99,13 +104,20 @@ function renderiza_hum(url){
                                     label = 'Umidade: ' + context.dataset.data[context.dataIndex] + ',  Alunos: ' + context.dataset.data_alunos[context.dataIndex];
                                 }
 
+
                                 return label;
                             }
+                        }
+                    },
+                    legend:{
+                        labels:{
+                          boxWidth: 0.
                         }
                     }
                 }
             },
             data: {
+
                 labels: data.labels,
                 datasets: [{
                     label: 'Média de Umidade',
@@ -152,8 +164,14 @@ function renderiza_lux(url) {
                                     label = 'Lux: ' + context.dataset.data[context.dataIndex] + ',  Alunos: ' + context.dataset.data_alunos[context.dataIndex];
                                 }
 
+
                                 return label;
                             }
+                        }
+                    },
+                    legend:{
+                        labels:{
+                          boxWidth: 0.
                         }
                     }
                 }
@@ -161,7 +179,7 @@ function renderiza_lux(url) {
             data: {
                 labels: data.labels,
                 datasets: [{
-                    label: 'Média em Lux',
+                    label: 'Média de Lux',
                     data: data.data_lux, // Assuming data_lux is available in your data
                     data_alunos: data.data_alunos, // Assuming data_alunos is available in your data
                     backgroundColor: bg_color,
@@ -206,16 +224,23 @@ function renderiza_volts(url){
                                     label = 'Volts: ' + context.dataset.data[context.dataIndex] + ',  Alunos: ' + context.dataset.data_alunos[context.dataIndex];
                                 }
 
+
                                 return label;
                             }
+                        }
+                    },
+                    legend:{
+                        labels:{
+                          boxWidth: 0.
                         }
                     }
                 }
             },
             data: {
+
                 labels: data.labels,
                 datasets: [{
-                    label: 'Média em Volts',
+                    label: 'Média de Volts',
                     data: data.data_volts, // Assuming data_lux is available in your data
                     data_alunos: data.data_alunos, // Assuming data_alunos is available in your data
                     backgroundColor: bg_color,
